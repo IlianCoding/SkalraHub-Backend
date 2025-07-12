@@ -18,3 +18,5 @@ appsettings.Development.json
 
 # Rider-specific files
 /.idea/
+bin/
+obj/
