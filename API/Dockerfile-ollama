@@ -1,0 +1,22 @@
+﻿FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV OLLAMA_HOST=0.0.0.0:11434
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl wget ca-certificates \
+    bash dos2unix \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Ollama
+RUN curl -fsSL https://ollama.ai/install.sh | bash
+
+# Copy entrypoint script
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && dos2unix /entrypoint.sh
+
+EXPOSE 11434
+
+CMD ["/entrypoint.sh"]
