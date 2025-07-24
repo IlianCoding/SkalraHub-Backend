@@ -13,8 +13,8 @@
 /dataSources.local.xml
 
 # Developer-specific files
-appsettings.json
 appsettings.Development.json
+appsettings.Production.json
 
 # Rider-specific files
 /.idea/
